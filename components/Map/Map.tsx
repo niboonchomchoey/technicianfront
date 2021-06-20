@@ -29,6 +29,7 @@ function Map({ contractors }: IProps) {
     const mapRef = useRef()
 
     const onMapLoad = useCallback((map: any) => {
+
         mapRef.current = map
     }, [])
 
@@ -49,9 +50,9 @@ function Map({ contractors }: IProps) {
                         position={{ lat: contractor.contractor_lat, lng: contractor.contractor_lng }}
                         icon={{
                             url: '/construction.svg',
-                            scaledSize: new window.google.maps.Size(30, 30),
-                            origin: new window.google.maps.Point(0, 0),
-                            anchor: new window.google.maps.Point(15, 15)
+                            scaledSize: new (window as any).google.maps.Size(30, 30),
+                            origin: new (window as any).google.maps.Point(0, 0),
+                            anchor: new (window as any).google.maps.Point(15, 15)
                         }}
                         onClick={() => setSelected(contractor)}
                     />
