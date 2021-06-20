@@ -79,7 +79,7 @@ export default function Register({ categories, currentUser }: { categories: Cate
         mapRef.current.panTo({ lat: e.latLng.lat(), lng: e.latLng.lng() })
     }, [])
 
-    const mapRef = useRef()
+    const mapRef = useRef<GoogleMap>()
     const onMapLoad = useCallback((map: any) => {
         mapRef.current = map
     }, [])
@@ -298,9 +298,9 @@ export default function Register({ categories, currentUser }: { categories: Cate
                                                 position={{ lat: marker.lat, lng: marker.lng }}
                                                 icon={{
                                                     url: '/construction.svg',
-                                                    scaledSize: new window.google.maps.Size(30, 30),
-                                                    origin: new window.google.maps.Point(0, 0),
-                                                    anchor: new window.google.maps.Point(15, 15)
+                                                    scaledSize: new (window as any).google.maps.Size(30, 30),
+                                                    origin: new (window as any).google.maps.Point(0, 0),
+                                                    anchor: new (window as any).google.maps.Point(15, 15)
                                                 }}
                                             // onClick={() => {
 
